@@ -35,7 +35,7 @@ lsl/networking/tasserver.cpp
 #include "utils/tasutil.h"
 #include "utils/version.h"
 
-SLCONFIG("/Server/ExitMessage", "Using https://springlobby.info/", "Message which is send when leaving server");
+SLCONFIG("/Server/ExitMessage", "Using https://springlobby.springrts.com/", "Message which is send when leaving server");
 
 // times in milliseconds
 #define PING_TIME 30000
@@ -383,7 +383,7 @@ void TASServer::Login()
 	if (localaddr.empty())
 		localaddr = "*";
 	m_id_transmission = false;
-	SendCmd("LOGIN", stdprintf("%s %s 0 %s %s\t%u %s\tsp cl u l t",
+	SendCmd("LOGIN", stdprintf("%s %s 0 %s %s\t%u %s\tsp u",
 	GetUserName().c_str(), pass.c_str(), localaddr.c_str(),
 	GetSpringlobbyAgent().c_str(), m_crc.GetCRC(), GetSys().c_str()));
 	m_id_transmission = true;

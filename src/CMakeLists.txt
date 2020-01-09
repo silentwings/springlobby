@@ -330,9 +330,9 @@ else()
 	set(SPRINGLOBBY_CONFIGH_DIR ${springlobby_BINARY_DIR})
 endif()
 
-add_custom_target(version ALL ${springlobby_SOURCE_DIR}/tools/regen_config_header.sh ${springlobby_SOURCE_DIR} ${springlobby_BINARY_DIR})
+add_custom_target(version ALL ${springlobby_SOURCE_DIR}/cmake/regen_config_header.sh ${springlobby_SOURCE_DIR} ${springlobby_BINARY_DIR})
 add_custom_command(OUTPUT ${SPRINGLOBBY_CONFIGH_DIR}/springlobby_config.h
-			COMMAND ${springlobby_SOURCE_DIR}/tools/regen_config_header.sh ${springlobby_SOURCE_DIR} ${springlobby_BINARY_DIR}
+			COMMAND ${springlobby_SOURCE_DIR}/cmake/regen_config_header.sh ${springlobby_SOURCE_DIR} ${springlobby_BINARY_DIR}
 		)
 
 set_property(SOURCE utils/version.cpp APPEND PROPERTY OBJECT_DEPENDS ${SPRINGLOBBY_CONFIGH_DIR}/springlobby_config.h)
@@ -395,7 +395,6 @@ ENDIF( LIBNOTIFY_FOUND AND OPTION_NOTIFY )
 IF(WIN32)
 	TARGET_LINK_LIBRARIES( springlobby
 		iphlpapi
-		nettle
 		ws2_32
 	)
 	install(TARGETS springlobby RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX})
